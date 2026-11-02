@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="КиноВечер — онлайн-кинотеатр: смотрите фильмы и сериалы без рекламы в 4K на телефоне и компьютере.">
+  <title>Главная — КиноВечер</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Главная — КиноВечер">
+  <meta property="og:description" content="КиноВечер — онлайн-кинотеатр: смотрите фильмы и сериалы без рекламы в 4K на телефоне и компьютере.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="topbar" id="top">
+    <div class="wrap topbar__row">
+      <a class="topbar__logo" href="index.html">Кино<span>Вечер</span></a>
+
+      <!-- бургер виден только на телефоне, см. адаптив в style.css и js/main.js -->
+      <!-- Поиск по каталогу, как на Кинопоиске; на телефоне скрыт -->
+      <form class="search" action="movies.html" role="search">
+        <input class="search__input" type="search" name="q" placeholder="Фильмы, сериалы" aria-label="Поиск по каталогу">
+      </form>
+
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="sr-only">Открыть меню</span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Основная навигация">
+        <ul class="menu__list">
+          <li><a class="menu__link menu__link--here" href="index.html" aria-current="page">Главная</a></li>
+          <li><a class="menu__link" href="movies.html">Фильмы</a></li>
+          <li><a class="menu__link" href="series.html">Сериалы</a></li>
+          <li><a class="menu__link" href="kids.html">Детям</a></li>
+          <li><a class="menu__link" href="subscription.html">Подписка</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Карусель премьер, как на IVI: компонент Bootstrap, листается сама и стрелками -->
+    <section class="promo">
+      <div id="promo-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#promo-carousel" data-bs-slide-to="0" class="active" aria-label="Слайд 1"></button>
+          <button type="button" data-bs-target="#promo-carousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+          <button type="button" data-bs-target="#promo-carousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="promo__slide" style="background-image: url('images/dune2-wide.jpg')">
+            <div class="wrap">
+              <div class="promo__grid">
+                <p class="promo__tag"><span class="promo__dot" aria-hidden="true"></span>Премьера недели</p>
+                <h1 class="promo__title">Дюна: Часть вторая</h1>
+
+                <ul class="promo__meta">
+                  <li><a class="promo__score" href="https://www.imdb.com/title/tt15239678/" target="_blank" rel="noopener" title="Смотреть рейтинг на IMDb">★ 8,5 на IMDb</a></li>
+                  <li>2024</li>
+                  <li>Фантастика</li>
+                  <li>2 ч 46 мин</li>
+                  <li>12+</li>
+                </ul>
+
+                <p class="promo__text">
+                  Пол Атрейдес объединяется с фрименами, чтобы отомстить за свою семью, и встаёт перед выбором между любовью и судьбой всей вселенной. Продолжение эпической саги Дени Вильнёва — уже в каталоге.
+                </p>
+
+                <div class="promo__buttons">
+                  <a class="btn btn--fill" href="movie.html">Смотреть</a>
+                  <a class="btn btn--line" href="movie.html">Подробнее о фильме</a>
+                </div>
+              </div>
+
+              <p class="promo__caption">Кадр из фильма «Дюна: Часть вторая» (2024)</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="promo__slide" style="background-image: url('images/interstellar-wide.jpg')">
+            <div class="wrap">
+              <div class="promo__grid">
+                <p class="promo__tag"><span class="promo__dot" aria-hidden="true"></span>Космическая эпопея</p>
+                <h1 class="promo__title">Интерстеллар</h1>
+
+                <ul class="promo__meta">
+                  <li><a class="promo__score" href="https://www.imdb.com/title/tt0816692/" target="_blank" rel="noopener" title="Смотреть рейтинг на IMDb">★ 8,7 на IMDb</a></li>
+                  <li>2014</li>
+                  <li>Фантастика</li>
+                  <li>2 ч 49 мин</li>
+                  <li>16+</li>
+                </ul>
+
+                <p class="promo__text">
+                  Земле грозит голод, и бывший пилот НАСА Купер возглавляет экспедицию через червоточину у Сатурна, чтобы найти людям новый дом. Фильм Кристофера Нолана — в качестве 4K.
+                </p>
+
+                <div class="promo__buttons">
+                  <a class="btn btn--fill" href="movie-interstellar.html">Смотреть</a>
+                  <a class="btn btn--line" href="movie-interstellar.html">Подробнее о фильме</a>
+                </div>
+              </div>
+
+              <p class="promo__caption">Кадр из фильма «Интерстеллар» (2014)</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="promo__slide" style="background-image: url('images/inception-wide.jpg')">
+            <div class="wrap">
+              <div class="promo__grid">
+                <p class="promo__tag"><span class="promo__dot" aria-hidden="true"></span>Классика жанра</p>
+                <h1 class="promo__title">Начало</h1>
+
+                <ul class="promo__meta">
+                  <li><a class="promo__score" href="https://www.imdb.com/title/tt1375666/" target="_blank" rel="noopener" title="Смотреть рейтинг на IMDb">★ 8,8 на IMDb</a></li>
+                  <li>2010</li>
+                  <li>Триллер</li>
+                  <li>2 ч 28 мин</li>
+                  <li>12+</li>
+                </ul>
+
+                <p class="promo__text">
+                  Дом Кобб — вор, который проникает в чужие сны. Теперь ему предстоит обратная задача: не украсть идею, а внедрить её. Город, складывающийся пополам, — уже на экране.
+                </p>
+
+                <div class="promo__buttons">
+                  <a class="btn btn--fill" href="movie-inception.html">Смотреть</a>
+                  <a class="btn btn--line" href="movie-inception.html">Подробнее о фильме</a>
+                </div>
+              </div>
+
+              <p class="promo__caption">Кадр из фильма «Начало» (2010)</p>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#promo-carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Назад</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#promo-carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Вперёд</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="block" id="advantages">
+        <div class="block__head">
+          <div>
+            <p class="block__eyebrow">Почему мы</p>
+            <h2 class="block__title">Почему КиноВечер</h2>
+          </div>
+        </div>
+
+        <ul class="perks">
+          <li class="perks__item">
+            <span class="perks__icon" aria-hidden="true">&#10007;</span>
+            <h3 class="perks__name">Без рекламы</h3>
+            <p class="perks__text">
+              Ничего не отвлекает от фильма: ни паузы в начале, ни вставки
+              посередине.
+            </p>
+          </li>
+          <li class="perks__item">
+            <span class="perks__icon" aria-hidden="true">4K</span>
+            <h3 class="perks__name">Качество 4K</h3>
+            <p class="perks__text">
+              Премьеры и классика в разрешении до 4K с объёмным звуком.
+            </p>
+          </li>
+          <li class="perks__item">
+            <span class="perks__icon" aria-hidden="true">&#128241;</span>
+            <h3 class="perks__name">На любом устройстве</h3>
+            <p class="perks__text">
+              Начните на телефоне в дороге и продолжите на компьютере дома —
+              с того же места.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="block" id="popular">
+        <div class="block__head">
+          <div>
+            <p class="block__eyebrow">Подборка</p>
+            <h2 class="block__title">Популярные фильмы</h2>
+          </div>
+          <a class="block__link" href="movies.html">Все фильмы &rarr;</a>
+        </div>
+
+        <!-- Лента фильмов, как на IVI: листается свайпом и стрелками (js/main.js) -->
+        <div class="rail-wrap">
+          <div class="rail" id="popular-rail">
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label film-card__label--new">Новинка</span>
+              <img
+                class="film-card__img"
+                src="images/dune2.jpg"
+                alt="Постер фильма «Дюна: Часть вторая»"
+                width="600"
+                height="900"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt15239678/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,5</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Фантастика</p>
+              <h3 class="film-card__name">Дюна: Часть вторая</h3>
+              <p class="film-card__info">2024 · 2 ч 46 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="movie.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label">Хит</span>
+              <img
+                class="film-card__img"
+                src="images/interstellar.jpg"
+                alt="Постер фильма «Интерстеллар»"
+                width="600"
+                height="900"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0816692/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,7</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Фантастика</p>
+              <h3 class="film-card__name">Интерстеллар</h3>
+              <p class="film-card__info">2014 · 2 ч 49 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="movie-interstellar.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/shawshank.jpg"
+                alt="Постер фильма «Побег из Шоушенка»"
+                width="300"
+                height="450"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0111161/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 9,3</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Драма</p>
+              <h3 class="film-card__name">Побег из Шоушенка</h3>
+              <p class="film-card__info">1994 · 2 ч 22 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="movie-shawshank.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/forrest-gump.jpg"
+                alt="Постер фильма «Форрест Гамп»"
+                width="220"
+                height="330"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0109830/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,8</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Драма</p>
+              <h3 class="film-card__name">Форрест Гамп</h3>
+              <p class="film-card__info">1994 · 2 ч 22 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="movie-forrest-gump.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/inception.jpg"
+                alt="Постер фильма «Начало»"
+                width="382"
+                height="573"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt1375666/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,8</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Триллер</p>
+              <h3 class="film-card__name">Начало</h3>
+              <p class="film-card__info">2010 · 2 ч 28 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="movie-inception.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/shutter-island.jpg"
+                alt="Постер фильма «Остров проклятых»"
+                width="170"
+                height="255"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt1130884/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,2</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Триллер</p>
+              <h3 class="film-card__name">Остров проклятых</h3>
+              <p class="film-card__info">2009 · 2 ч 18 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="movie-shutter-island.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/pirates.jpg"
+                alt="Постер фильма «Пираты Карибского моря: Проклятие Чёрной жемчужины»"
+                width="220"
+                height="330"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0325980/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,1</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Приключения</p>
+              <h3 class="film-card__name">Пираты Карибского моря</h3>
+              <p class="film-card__info">2003 · 2 ч 23 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="movie-pirates.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/jumanji.jpg"
+                alt="Постер фильма «Джуманджи: Зов джунглей»"
+                width="600"
+                height="900"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt2283362/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 7,6</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Приключения</p>
+              <h3 class="film-card__name">Джуманджи: Зов джунглей</h3>
+              <p class="film-card__info">2017 · 1 ч 59 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="movie-jumanji.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          </div>
+          <button class="rail__arrow rail__arrow--prev" type="button" aria-label="Листать назад" data-rail-prev>&lsaquo;</button>
+          <button class="rail__arrow rail__arrow--next" type="button" aria-label="Листать вперёд" data-rail-next>&rsaquo;</button>
+        </div>
+      </section>
+
+      <!-- Призыв к подписке перед подвалом -->
+
+      <section class="block" id="series">
+        <div class="block__head">
+          <div>
+            <p class="block__eyebrow">Подборка</p>
+            <h2 class="block__title">Сериалы</h2>
+          </div>
+          <a class="block__link" href="series.html">Все сериалы &rarr;</a>
+        </div>
+
+        <div class="rail-wrap">
+          <div class="rail" id="series-rail">
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label">Хит</span>
+              <img
+                class="film-card__img"
+                src="images/breaking-bad.jpg"
+                alt="Постер сериала «Во все тяжкие»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0903747/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 9,5</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Криминальная драма</p>
+              <h3 class="film-card__name">Во все тяжкие</h3>
+              <p class="film-card__info">2008–2013 · 5 сезонов</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-breaking-bad.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label film-card__label--new">Новинка</span>
+              <img
+                class="film-card__img"
+                src="images/slovo-pacana.jpg"
+                alt="Постер сериала «Слово пацана. Кровь на асфальте»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt27719841/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,1</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Криминальная драма</p>
+              <h3 class="film-card__name">Слово пацана. Кровь на асфальте</h3>
+              <p class="film-card__info">2023 · 1 сезон</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-slovo-pacana.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label">Хит</span>
+              <img
+                class="film-card__img"
+                src="images/game-of-thrones.jpg"
+                alt="Постер сериала «Игра престолов»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0944947/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 9,2</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Фэнтези</p>
+              <h3 class="film-card__name">Игра престолов</h3>
+              <p class="film-card__info">2011–2019 · 8 сезонов</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-game-of-thrones.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label film-card__label--new">Новинка</span>
+              <img
+                class="film-card__img"
+                src="images/stranger-things.jpg"
+                alt="Постер сериала «Очень странные дела»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt4574334/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,7</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Фантастика</p>
+              <h3 class="film-card__name">Очень странные дела</h3>
+              <p class="film-card__info">2016–2025 · 5 сезонов</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-stranger-things.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/sherlock.jpg"
+                alt="Постер сериала «Шерлок»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt1475582/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 9,1</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Детектив</p>
+              <h3 class="film-card__name">Шерлок</h3>
+              <p class="film-card__info">2010–2017 · 4 сезона</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-sherlock.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/friends.jpg"
+                alt="Постер сериала «Друзья»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0108778/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,9</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Комедия</p>
+              <h3 class="film-card__name">Друзья</h3>
+              <p class="film-card__info">1994–2004 · 10 сезонов</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-friends.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          </div>
+          <button class="rail__arrow rail__arrow--prev" type="button" aria-label="Листать назад" data-rail-prev>&lsaquo;</button>
+          <button class="rail__arrow rail__arrow--next" type="button" aria-label="Листать вперёд" data-rail-next>&rsaquo;</button>
+        </div>
+      </section>
+
+      <section class="block" id="kids">
+        <div class="block__head">
+          <div>
+            <p class="block__eyebrow">Подборка</p>
+            <h2 class="block__title">Детям</h2>
+          </div>
+          <a class="block__link" href="kids.html">Все мультфильмы &rarr;</a>
+        </div>
+
+        <div class="rail-wrap">
+          <div class="rail" id="kids-rail">
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label">Хит</span>
+              <img
+                class="film-card__img"
+                src="images/lion-king.jpg"
+                alt="Постер мультфильма «Король Лев»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0110357/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,5</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Король Лев</h3>
+              <p class="film-card__info">1994 · 1 ч 28 мин · 0+</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-lion-king.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/cars.jpg"
+                alt="Постер мультфильма «Тачки»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0317219/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 7,2</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Тачки</h3>
+              <p class="film-card__info">2006 · 1 ч 57 мин · 0+</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-cars.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/zootopia.jpg"
+                alt="Постер мультфильма «Зверополис»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt2948356/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,0</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Зверополис</h3>
+              <p class="film-card__info">2016 · 1 ч 48 мин · 6+</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-zootopia.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/frozen.jpg"
+                alt="Постер мультфильма «Холодное сердце»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt2294629/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 7,4</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Холодное сердце</h3>
+              <p class="film-card__info">2013 · 1 ч 42 мин · 0+</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-frozen.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label">Хит</span>
+              <img
+                class="film-card__img"
+                src="images/shrek.jpg"
+                alt="Постер мультфильма «Шрек»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0126029/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 7,9</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Шрек</h3>
+              <p class="film-card__info">2001 · 1 ч 30 мин · 0+</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-shrek.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/dragon.jpg"
+                alt="Постер мультфильма «Как приручить дракона»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0892769/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,1</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Как приручить дракона</h3>
+              <p class="film-card__info">2010 · 1 ч 38 мин · 6+</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-dragon.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+          </div>
+          <button class="rail__arrow rail__arrow--prev" type="button" aria-label="Листать назад" data-rail-prev>&lsaquo;</button>
+          <button class="rail__arrow rail__arrow--next" type="button" aria-label="Листать вперёд" data-rail-next>&rsaquo;</button>
+        </div>
+      </section>
+      <div class="cta">
+        <div>
+          <h2 class="cta__title">7 дней просмотра за 1 рубль</h2>
+          <p class="cta__text">Оформите подписку и смотрите весь каталог без ограничений. Отмена — в один клик.</p>
+        </div>
+        <a class="btn btn--fill" href="subscription.html">Выбрать тариф</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <!-- Колонки футера, как у больших онлайн-кинотеатров: сетка Bootstrap (row + col) -->
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="topbar__logo" href="index.html">Кино<span>Вечер</span></a>
+          <p class="footer__brand-text">
+            Онлайн-кинотеатр с фильмами и сериалами в качестве 4K.
+            Без рекламы, на любом устройстве.
+          </p>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h2 class="footer__col-title">Разделы</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="index.html">Главная</a></li>
+            <li><a class="footer__link" href="movies.html">Фильмы</a></li>
+            <li><a class="footer__link" href="series.html">Сериалы</a></li>
+            <li><a class="footer__link" href="kids.html">Детям</a></li>
+            <li><a class="footer__link" href="subscription.html">Подписка</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-3">
+          <h2 class="footer__col-title">Зрителям</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="subscription.html#how">Как оформить подписку</a></li>
+            <li><a class="footer__link" href="subscription.html#faq">Частые вопросы</a></li>
+            <li><a class="footer__link" href="movies.html#premieres">Премьеры недели</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-3">
+          <h2 class="footer__col-title">Поддержка</h2>
+          <a class="footer__phone" href="tel:88001002447">8 800 100-24-47</a>
+          <p class="footer__phone-note">Бесплатно по России, круглосуточно</p>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="mailto:help@kinovecher.ru">help@kinovecher.ru</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer__divider">
+
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 КиноВечер. Учебный проект, все фильмы - собственность правообладателей.</p>
+        <ul class="footer__docs">
+          <li><span class="footer__text">Пользовательское соглашение</span></li>
+          <li><span class="footer__text">Политика конфиденциальности</span></li>
+        </ul>
+        <span class="footer__age">12+</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="up" href="#top">Наверх</a>
+
+  <!-- Модальное окно быстрой подписки: открывается кнопками с data-movie, см. js/main.js -->
+  <dialog class="modal" id="subscribe-dialog" aria-labelledby="subscribe-dialog-title">
+    <div class="modal__top">
+      <h2 class="modal__title" id="subscribe-dialog-title">Быстрая подписка</h2>
+      <button class="modal__x" type="button" aria-label="Закрыть окно" data-dialog-close>&times;</button>
+    </div>
+
+    <div class="modal__body">
+      <div class="modal__film">
+        <img
+          class="modal__film-img"
+          id="dialog-movie-img"
+          src="images/dune2.jpg"
+          alt=""
+          width="60"
+          height="90"
+        >
+        <div>
+          <p class="modal__film-name" id="dialog-movie-name"></p>
+          <p class="modal__film-sub" id="dialog-movie-meta"></p>
+        </div>
+      </div>
+
+      <form class="form" id="dialog-form" action="#" method="post" novalidate>
+        <input id="selected-movie" name="selected-movie" type="hidden">
+
+        <p class="form__hint-line">
+          Чтобы смотреть этот фильм, оформите подписку.
+          Поля со <span class="form__star" aria-hidden="true">*</span> обязательны.
+        </p>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-name">
+            Имя <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form__input"
+            id="dialog-name"
+            name="name"
+            type="text"
+            placeholder="Введите ваше имя"
+            minlength="2"
+            autocomplete="given-name"
+            required
+          >
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-email">
+            E-mail <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form__input"
+            id="dialog-email"
+            name="email"
+            type="email"
+            placeholder="example@mail.ru"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-plan">
+            Тариф <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <select class="form__select" id="dialog-plan" name="plan" required>
+            <option value="">Выберите тариф</option>
+            <option value="basic">Базовый — 199 руб./мес</option>
+            <option value="standard" selected>Стандарт — 349 руб./мес</option>
+            <option value="premium">Премиум — 499 руб./мес</option>
+          </select>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label">
+            <input id="dialog-agreement" name="agreement" type="checkbox" required>
+            Я согласен на обработку данных <span class="form__star" aria-hidden="true">*</span>
+          </label>
+        </div>
+
+        <div class="form__btns">
+          <button class="btn btn--line" type="button" data-dialog-close>Отмена</button>
+          <button class="btn btn--fill" type="submit">Оформить и смотреть</button>
+        </div>
+      </form>
+
+      <div class="modal__done" id="dialog-success" role="status" hidden>
+        <span class="modal__done-icon" aria-hidden="true">&#10003;</span>
+        <h3>Подписка оформлена</h3>
+        <p class="modal__done-text" id="dialog-success-text"></p>
+        <button class="btn btn--fill" type="button" data-dialog-close>Смотреть</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

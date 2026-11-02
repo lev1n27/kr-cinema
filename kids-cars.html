@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Мультфильм «Тачки» (2006) — смотреть онлайн в «КиноВечер». Приключения Молнии МакКуина от Pixar.">
+  <title>Тачки — КиноВечер</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Тачки — КиноВечер">
+  <meta property="og:description" content="Мультфильм «Тачки» (2006) — смотреть онлайн в «КиноВечер». Приключения Молнии МакКуина от Pixar.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="topbar" id="top">
+    <div class="wrap topbar__row">
+      <a class="topbar__logo" href="index.html">Кино<span>Вечер</span></a>
+
+      <!-- бургер виден только на телефоне, см. адаптив в style.css и js/main.js -->
+      <!-- Поиск по каталогу, как на Кинопоиске; на телефоне скрыт -->
+      <form class="search" action="movies.html" role="search">
+        <input class="search__input" type="search" name="q" placeholder="Фильмы, сериалы" aria-label="Поиск по каталогу">
+      </form>
+
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="sr-only">Открыть меню</span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Основная навигация">
+        <ul class="menu__list">
+          <li><a class="menu__link" href="index.html">Главная</a></li>
+          <li><a class="menu__link" href="movies.html">Фильмы</a></li>
+          <li><a class="menu__link" href="series.html">Сериалы</a></li>
+          <li><a class="menu__link menu__link--here" href="kids.html" aria-current="page">Детям</a></li>
+          <li><a class="menu__link" href="subscription.html">Подписка</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="crumbs">
+        <a href="index.html">Главная</a> / <a href="kids.html">Детям</a> / Тачки
+      </div>
+
+      <!-- Карточка: постер слева, описание справа -->
+      <article class="film-page">
+        <div class="film-page__cover">
+          
+          <img
+            class="film-page__img"
+            src="images/cars.jpg"
+            alt="Постер мультфильма «Тачки»"
+            width="400"
+            height="600"
+          >
+        </div>
+
+        <div>
+          <h1 class="film-page__title">Тачки</h1>
+          <p class="film-page__sub">Cars · <a href="kids.html#disney">Мультфильм</a> · 2006</p>
+
+          <!-- плашка рейтинга: ведёт на страницу на IMDb -->
+          <a
+            class="film-page__score"
+            href="https://www.imdb.com/title/tt0317219/"
+            target="_blank"
+            rel="noopener"
+            title="Открыть страницу на IMDb"
+          >
+            <span class="film-page__score-star" aria-hidden="true">★</span>
+            7,2 из 10
+            <span class="film-page__score-site">IMDb</span>
+          </a>
+
+          <p class="film-page__desc">
+            Гоночный автомобиль Молния МакКуин мечтает выиграть Кубок Большого Поршня, но по пути случайно оказывается в забытом городке Радиатор-Спрингс на трассе 66. Там он находит настоящих друзей и понимает, что в жизни есть вещи важнее победы.
+          </p>
+
+          <div class="film-page__buttons">
+            <button class="btn btn--fill" type="button"
+              data-movie="Тачки"
+              data-meta="2006 · Мультфильм · 1 ч 57 мин · 0+"
+              data-image="images/cars.jpg"
+            >Смотреть</button>
+            <a class="btn btn--line" href="kids.html">Вернуться к мультфильмам</a>
+          </div>
+        </div>
+      </article>
+
+      <section class="block" id="about">
+        <div class="block__head">
+          <h2 class="block__title">Сведения о мультфильме</h2>
+        </div>
+
+        <table class="facts">
+          <caption class="facts__caption">Сведения: мультфильм «Тачки»</caption>
+          <tbody>
+            <tr class="facts__row">
+              <th scope="row">Режиссёр</th>
+              <td>Джон Лассетер</td>
+            </tr>
+            <tr class="facts__row">
+              <th scope="row">Год выпуска</th>
+              <td>2006</td>
+            </tr>
+            <tr class="facts__row">
+              <th scope="row">Длительность</th>
+              <td>1 ч 57 мин</td>
+            </tr>
+            <tr class="facts__row">
+              <th scope="row">Жанр</th>
+              <td>Мультфильм, комедия, спорт</td>
+            </tr>
+            <tr class="facts__row">
+              <th scope="row">Страна</th>
+              <td>США</td>
+            </tr>
+            <tr class="facts__row">
+              <th scope="row">В оригинале озвучивали</th>
+              <td>Оуэн Уилсон, Пол Ньюман, Бонни Хант</td>
+            </tr>
+            <tr class="facts__row">
+              <th scope="row">Возрастное ограничение</th>
+              <td>0+</td>
+            </tr>
+            <tr class="facts__row">
+              <th scope="row">Рейтинг IMDb</th>
+              <td><a href="https://www.imdb.com/title/tt0317219/" target="_blank" rel="noopener">★ 7,2 из 10</a></td>
+            </tr>
+            <tr class="facts__row">
+              <th scope="row">Качество</th>
+              <td>4K, Full HD</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="block" id="recs">
+        <div class="block__head">
+          <div>
+            <p class="block__eyebrow">Смотрите также</p>
+            <h2 class="block__title">Рекомендации</h2>
+          </div>
+          <a class="block__link" href="kids.html">Все: детям &rarr;</a>
+        </div>
+
+        <div class="films">
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/dragon.jpg"
+                alt="Постер мультфильма «Как приручить дракона»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0892769/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,1</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Как приручить дракона</h3>
+              <p class="film-card__info">2010 · 1 ч 38 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-dragon.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/frozen.jpg"
+                alt="Постер мультфильма «Холодное сердце»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt2294629/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 7,4</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Холодное сердце</h3>
+              <p class="film-card__info">2013 · 1 ч 42 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-frozen.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/lion-king.jpg"
+                alt="Постер мультфильма «Король Лев»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0110357/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,5</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Король Лев</h3>
+              <p class="film-card__info">1994 · 1 ч 28 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-lion-king.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/shrek.jpg"
+                alt="Постер мультфильма «Шрек»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0126029/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 7,9</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Мультфильм</p>
+              <h3 class="film-card__name">Шрек</h3>
+              <p class="film-card__info">2001 · 1 ч 30 мин</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="kids-shrek.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <!-- Колонки футера, как у больших онлайн-кинотеатров: сетка Bootstrap (row + col) -->
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="topbar__logo" href="index.html">Кино<span>Вечер</span></a>
+          <p class="footer__brand-text">
+            Онлайн-кинотеатр с фильмами и сериалами в качестве 4K.
+            Без рекламы, на любом устройстве.
+          </p>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h2 class="footer__col-title">Разделы</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="index.html">Главная</a></li>
+            <li><a class="footer__link" href="movies.html">Фильмы</a></li>
+            <li><a class="footer__link" href="series.html">Сериалы</a></li>
+            <li><a class="footer__link" href="kids.html">Детям</a></li>
+            <li><a class="footer__link" href="subscription.html">Подписка</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-3">
+          <h2 class="footer__col-title">Зрителям</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="subscription.html#how">Как оформить подписку</a></li>
+            <li><a class="footer__link" href="subscription.html#faq">Частые вопросы</a></li>
+            <li><a class="footer__link" href="movies.html#premieres">Премьеры недели</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-3">
+          <h2 class="footer__col-title">Поддержка</h2>
+          <a class="footer__phone" href="tel:88001002447">8 800 100-24-47</a>
+          <p class="footer__phone-note">Бесплатно по России, круглосуточно</p>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="mailto:help@kinovecher.ru">help@kinovecher.ru</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer__divider">
+
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 КиноВечер. Учебный проект, все фильмы - собственность правообладателей.</p>
+        <ul class="footer__docs">
+          <li><span class="footer__text">Пользовательское соглашение</span></li>
+          <li><span class="footer__text">Политика конфиденциальности</span></li>
+        </ul>
+        <span class="footer__age">12+</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="up" href="#top">Наверх</a>
+
+  <!-- Модальное окно быстрой подписки: открывается кнопками с data-movie, см. js/main.js -->
+  <dialog class="modal" id="subscribe-dialog" aria-labelledby="subscribe-dialog-title">
+    <div class="modal__top">
+      <h2 class="modal__title" id="subscribe-dialog-title">Быстрая подписка</h2>
+      <button class="modal__x" type="button" aria-label="Закрыть окно" data-dialog-close>&times;</button>
+    </div>
+
+    <div class="modal__body">
+      <div class="modal__film">
+        <img
+          class="modal__film-img"
+          id="dialog-movie-img"
+          src="images/dune2.jpg"
+          alt=""
+          width="60"
+          height="90"
+        >
+        <div>
+          <p class="modal__film-name" id="dialog-movie-name"></p>
+          <p class="modal__film-sub" id="dialog-movie-meta"></p>
+        </div>
+      </div>
+
+      <form class="form" id="dialog-form" action="#" method="post" novalidate>
+        <input id="selected-movie" name="selected-movie" type="hidden">
+
+        <p class="form__hint-line">
+          Чтобы смотреть этот фильм, оформите подписку.
+          Поля со <span class="form__star" aria-hidden="true">*</span> обязательны.
+        </p>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-name">
+            Имя <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form__input"
+            id="dialog-name"
+            name="name"
+            type="text"
+            placeholder="Введите ваше имя"
+            minlength="2"
+            autocomplete="given-name"
+            required
+          >
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-email">
+            E-mail <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form__input"
+            id="dialog-email"
+            name="email"
+            type="email"
+            placeholder="example@mail.ru"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-plan">
+            Тариф <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <select class="form__select" id="dialog-plan" name="plan" required>
+            <option value="">Выберите тариф</option>
+            <option value="basic">Базовый — 199 руб./мес</option>
+            <option value="standard" selected>Стандарт — 349 руб./мес</option>
+            <option value="premium">Премиум — 499 руб./мес</option>
+          </select>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label">
+            <input id="dialog-agreement" name="agreement" type="checkbox" required>
+            Я согласен на обработку данных <span class="form__star" aria-hidden="true">*</span>
+          </label>
+        </div>
+
+        <div class="form__btns">
+          <button class="btn btn--line" type="button" data-dialog-close>Отмена</button>
+          <button class="btn btn--fill" type="submit">Оформить и смотреть</button>
+        </div>
+      </form>
+
+      <div class="modal__done" id="dialog-success" role="status" hidden>
+        <span class="modal__done-icon" aria-hidden="true">&#10003;</span>
+        <h3>Подписка оформлена</h3>
+        <p class="modal__done-text" id="dialog-success-text"></p>
+        <button class="btn btn--fill" type="button" data-dialog-close>Смотреть</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

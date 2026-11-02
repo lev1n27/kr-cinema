@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сериалы онлайн-кинотеатра КиноВечер: драмы, детективы, комедии и фантастика — все сезоны в 4K и без рекламы.">
+  <title>Сериалы — КиноВечер</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Сериалы — КиноВечер">
+  <meta property="og:description" content="Сериалы онлайн-кинотеатра КиноВечер: драмы, детективы, комедии и фантастика — все сезоны в 4K и без рекламы.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="topbar" id="top">
+    <div class="wrap topbar__row">
+      <a class="topbar__logo" href="index.html">Кино<span>Вечер</span></a>
+
+      <!-- бургер виден только на телефоне, см. адаптив в style.css и js/main.js -->
+      <!-- Поиск по каталогу, как на Кинопоиске; на телефоне скрыт -->
+      <form class="search" action="movies.html" role="search">
+        <input class="search__input" type="search" name="q" placeholder="Фильмы, сериалы" aria-label="Поиск по каталогу">
+      </form>
+
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="sr-only">Открыть меню</span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Основная навигация">
+        <ul class="menu__list">
+          <li><a class="menu__link" href="index.html">Главная</a></li>
+          <li><a class="menu__link" href="movies.html">Фильмы</a></li>
+          <li><a class="menu__link menu__link--here" href="series.html" aria-current="page">Сериалы</a></li>
+          <li><a class="menu__link" href="kids.html">Детям</a></li>
+          <li><a class="menu__link" href="subscription.html">Подписка</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="crumbs">
+        <a href="index.html">Главная</a> / Сериалы
+      </div>
+
+      <div class="page-head">
+        <h1 class="page-head__title">Сериалы</h1>
+        <p class="page-head__note">Найдено сериалов: 6</p>
+      </div>
+
+      <!-- Расписание выхода новых серий: такая же таблица, как у ближайших сеансов -->
+      <section class="film-group" id="episodes">
+        <div class="film-group__head">
+          <h2 class="film-group__title">Выход новых серий</h2>
+          <p class="film-group__count">3–9 ноября</p>
+        </div>
+
+        <div class="sessions-wrap">
+          <table class="sessions">
+            <thead>
+              <tr>
+                <th scope="col">Дата</th>
+                <th scope="col">Время</th>
+                <th scope="col">Сериал</th>
+                <th scope="col">Серия</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="sessions__date">3 ноября</td>
+                <td>19:00</td>
+                <td><a class="sessions__film" href="series-slovo-pacana.html">Слово пацана. Кровь на асфальте</a></td>
+                <td><span class="sessions__episode">2 сезон, 5 серия</span></td>
+              </tr>
+              <tr>
+                <td class="sessions__date">4 ноября</td>
+                <td>20:00</td>
+                <td><a class="sessions__film" href="series-stranger-things.html">Очень странные дела</a></td>
+                <td><span class="sessions__episode">5 сезон, 3 серия</span></td>
+              </tr>
+              <tr>
+                <td class="sessions__date">5 ноября</td>
+                <td>21:00</td>
+                <td><a class="sessions__film" href="series-game-of-thrones.html">Игра престолов</a></td>
+                <td><span class="sessions__episode">3 сезон, 8 серия</span></td>
+              </tr>
+              <tr>
+                <td class="sessions__date">6 ноября</td>
+                <td>19:30</td>
+                <td><a class="sessions__film" href="series-sherlock.html">Шерлок</a></td>
+                <td><span class="sessions__episode">5 сезон, 1 серия</span></td>
+              </tr>
+              <tr>
+                <td class="sessions__date">7 ноября</td>
+                <td>18:00</td>
+                <td><a class="sessions__film" href="series-friends.html">Друзья</a></td>
+                <td><span class="sessions__episode">11 сезон, 4 серия</span></td>
+              </tr>
+              <tr>
+                <td class="sessions__date">8 ноября</td>
+                <td>20:30</td>
+                <td><a class="sessions__film" href="series-breaking-bad.html">Во все тяжкие</a></td>
+                <td><span class="sessions__episode">6 сезон, 2 серия</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Жанры-фишки: якорные ссылки на группы ниже -->
+      <nav class="genres" aria-label="Навигация по жанрам">
+        <ul class="genres__list">
+          <li><a class="genres__link genres__link--here" href="#drama" aria-current="true">Все <span class="genres__num">6</span></a></li>
+          <li><a class="genres__link" href="#drama">Драмы <span class="genres__num">2</span></a></li>
+          <li><a class="genres__link" href="#fantasy">Фэнтези и фантастика <span class="genres__num">2</span></a></li>
+          <li><a class="genres__link" href="#detective">Детективы <span class="genres__num">1</span></a></li>
+          <li><a class="genres__link" href="#comedy">Комедии <span class="genres__num">1</span></a></li>
+        </ul>
+      </nav>
+
+      <section class="film-group" id="drama">
+        <div class="film-group__head">
+          <h2 class="film-group__title">Драмы</h2>
+          <p class="film-group__count">2 сериала</p>
+        </div>
+
+        <div class="films">
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label">Хит</span>
+              <img
+                class="film-card__img"
+                src="images/breaking-bad.jpg"
+                alt="Постер сериала «Во все тяжкие»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0903747/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 9,5</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Криминальная драма</p>
+              <h3 class="film-card__name">Во все тяжкие</h3>
+              <p class="film-card__info">2008–2013 · 5 сезонов</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-breaking-bad.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label film-card__label--new">Новинка</span>
+              <img
+                class="film-card__img"
+                src="images/slovo-pacana.jpg"
+                alt="Постер сериала «Слово пацана. Кровь на асфальте»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt27719841/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,1</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Криминальная драма</p>
+              <h3 class="film-card__name">Слово пацана. Кровь на асфальте</h3>
+              <p class="film-card__info">2023 · 1 сезон</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-slovo-pacana.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="film-group" id="fantasy">
+        <div class="film-group__head">
+          <h2 class="film-group__title">Фэнтези и фантастика</h2>
+          <p class="film-group__count">2 сериала</p>
+        </div>
+
+        <div class="films">
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label">Хит</span>
+              <img
+                class="film-card__img"
+                src="images/game-of-thrones.jpg"
+                alt="Постер сериала «Игра престолов»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0944947/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 9,2</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Фэнтези</p>
+              <h3 class="film-card__name">Игра престолов</h3>
+              <p class="film-card__info">2011–2019 · 8 сезонов</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-game-of-thrones.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="film-card">
+            <div class="film-card__cover">
+              <span class="film-card__label film-card__label--new">Новинка</span>
+              <img
+                class="film-card__img"
+                src="images/stranger-things.jpg"
+                alt="Постер сериала «Очень странные дела»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt4574334/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,7</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Фантастика</p>
+              <h3 class="film-card__name">Очень странные дела</h3>
+              <p class="film-card__info">2016–2025 · 5 сезонов</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-stranger-things.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="film-group" id="detective">
+        <div class="film-group__head">
+          <h2 class="film-group__title">Детективы</h2>
+          <p class="film-group__count">1 сериал</p>
+        </div>
+
+        <div class="films">
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/sherlock.jpg"
+                alt="Постер сериала «Шерлок»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt1475582/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 9,1</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Детектив</p>
+              <h3 class="film-card__name">Шерлок</h3>
+              <p class="film-card__info">2010–2017 · 4 сезона</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-sherlock.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="film-group" id="comedy">
+        <div class="film-group__head">
+          <h2 class="film-group__title">Комедии</h2>
+          <p class="film-group__count">1 сериал</p>
+        </div>
+
+        <div class="films">
+          <article class="film-card">
+            <div class="film-card__cover">
+              <img
+                class="film-card__img"
+                src="images/friends.jpg"
+                alt="Постер сериала «Друзья»"
+                width="400"
+                height="600"
+                loading="lazy"
+              >
+              <a
+                class="film-card__score"
+                href="https://www.imdb.com/title/tt0108778/"
+                target="_blank"
+                rel="noopener"
+                title="Смотреть рейтинг на IMDb"
+              >★ 8,9</a>
+            </div>
+            <div class="film-card__body">
+              <p class="film-card__genre">Комедия</p>
+              <h3 class="film-card__name">Друзья</h3>
+              <p class="film-card__info">1994–2004 · 10 сезонов</p>
+              <div class="film-card__btns">
+                <a class="btn btn--fill" href="series-friends.html">Смотреть</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <!-- Колонки футера, как у больших онлайн-кинотеатров: сетка Bootstrap (row + col) -->
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="topbar__logo" href="index.html">Кино<span>Вечер</span></a>
+          <p class="footer__brand-text">
+            Онлайн-кинотеатр с фильмами и сериалами в качестве 4K.
+            Без рекламы, на любом устройстве.
+          </p>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h2 class="footer__col-title">Разделы</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="index.html">Главная</a></li>
+            <li><a class="footer__link" href="movies.html">Фильмы</a></li>
+            <li><a class="footer__link" href="series.html">Сериалы</a></li>
+            <li><a class="footer__link" href="kids.html">Детям</a></li>
+            <li><a class="footer__link" href="subscription.html">Подписка</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-3">
+          <h2 class="footer__col-title">Зрителям</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="subscription.html#how">Как оформить подписку</a></li>
+            <li><a class="footer__link" href="subscription.html#faq">Частые вопросы</a></li>
+            <li><a class="footer__link" href="movies.html#premieres">Премьеры недели</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-3">
+          <h2 class="footer__col-title">Поддержка</h2>
+          <a class="footer__phone" href="tel:88001002447">8 800 100-24-47</a>
+          <p class="footer__phone-note">Бесплатно по России, круглосуточно</p>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="mailto:help@kinovecher.ru">help@kinovecher.ru</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer__divider">
+
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 КиноВечер. Учебный проект, все фильмы - собственность правообладателей.</p>
+        <ul class="footer__docs">
+          <li><span class="footer__text">Пользовательское соглашение</span></li>
+          <li><span class="footer__text">Политика конфиденциальности</span></li>
+        </ul>
+        <span class="footer__age">12+</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="up" href="#top">Наверх</a>
+
+  <!-- Модальное окно быстрой подписки: открывается кнопками с data-movie, см. js/main.js -->
+  <dialog class="modal" id="subscribe-dialog" aria-labelledby="subscribe-dialog-title">
+    <div class="modal__top">
+      <h2 class="modal__title" id="subscribe-dialog-title">Быстрая подписка</h2>
+      <button class="modal__x" type="button" aria-label="Закрыть окно" data-dialog-close>&times;</button>
+    </div>
+
+    <div class="modal__body">
+      <div class="modal__film">
+        <img
+          class="modal__film-img"
+          id="dialog-movie-img"
+          src="images/dune2.jpg"
+          alt=""
+          width="60"
+          height="90"
+        >
+        <div>
+          <p class="modal__film-name" id="dialog-movie-name"></p>
+          <p class="modal__film-sub" id="dialog-movie-meta"></p>
+        </div>
+      </div>
+
+      <form class="form" id="dialog-form" action="#" method="post" novalidate>
+        <input id="selected-movie" name="selected-movie" type="hidden">
+
+        <p class="form__hint-line">
+          Чтобы смотреть этот фильм, оформите подписку.
+          Поля со <span class="form__star" aria-hidden="true">*</span> обязательны.
+        </p>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-name">
+            Имя <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form__input"
+            id="dialog-name"
+            name="name"
+            type="text"
+            placeholder="Введите ваше имя"
+            minlength="2"
+            autocomplete="given-name"
+            required
+          >
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-email">
+            E-mail <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="form__input"
+            id="dialog-email"
+            name="email"
+            type="email"
+            placeholder="example@mail.ru"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="dialog-plan">
+            Тариф <span class="form__star" aria-hidden="true">*</span>
+          </label>
+          <select class="form__select" id="dialog-plan" name="plan" required>
+            <option value="">Выберите тариф</option>
+            <option value="basic">Базовый — 199 руб./мес</option>
+            <option value="standard" selected>Стандарт — 349 руб./мес</option>
+            <option value="premium">Премиум — 499 руб./мес</option>
+          </select>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label">
+            <input id="dialog-agreement" name="agreement" type="checkbox" required>
+            Я согласен на обработку данных <span class="form__star" aria-hidden="true">*</span>
+          </label>
+        </div>
+
+        <div class="form__btns">
+          <button class="btn btn--line" type="button" data-dialog-close>Отмена</button>
+          <button class="btn btn--fill" type="submit">Оформить и смотреть</button>
+        </div>
+      </form>
+
+      <div class="modal__done" id="dialog-success" role="status" hidden>
+        <span class="modal__done-icon" aria-hidden="true">&#10003;</span>
+        <h3>Подписка оформлена</h3>
+        <p class="modal__done-text" id="dialog-success-text"></p>
+        <button class="btn btn--fill" type="button" data-dialog-close>Смотреть</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

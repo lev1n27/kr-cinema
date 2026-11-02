@@ -1,0 +1,1702 @@
+/* ===== 1. Переменные ===== */
+
+:root {
+  /* Тёмная тема онлайн-кинотеатра */
+  --bg: #121419;
+  --bg-block: #1b1e25;
+  --bg-card: #22262f;
+  --text: #f2f3f5;
+  --text-dim: #9aa1ad;
+  --accent: #e5484d;
+  --accent-hover: #c93a3f;
+  --gold: #f5c518;
+  --ok: #3fb950;
+  --line: #2e333d;
+  --shadow: rgba(0, 0, 0, 0.45);
+
+  --gap-s: 8px;
+  --gap-m: 16px;
+  --gap-l: 24px;
+  --gap-xl: 40px;
+
+  --round-s: 6px;
+  --round-m: 10px;
+  --round-l: 16px;
+
+  --width: 1120px;
+}
+
+/* ===== 2. Базовые стили ===== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.55;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+img {
+  display: block;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+:target {
+  outline: 2px dashed var(--accent);
+  outline-offset: 4px;
+}
+
+/* класс для текста, который нужен только экранным дикторам */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* общий ограничитель ширины контента */
+.wrap {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 0 var(--gap-l);
+}
+
+/* ===== 3. Кнопки ===== */
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--round-s);
+  font: inherit;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn--fill {
+  color: #ffffff;
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn--fill:hover,
+.btn--fill:active {
+  color: #ffffff;
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn--line {
+  color: var(--text);
+  background-color: transparent;
+  border-color: var(--line);
+}
+
+.btn--line:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ===== 4. Шапка ===== */
+
+/* sticky: шапка остаётся наверху при прокрутке,
+   blur размывает контент, который проходит под ней */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--line);
+  background-color: rgba(18, 20, 25, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.topbar__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-m);
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.topbar__logo {
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.topbar__logo span {
+  color: var(--accent);
+}
+
+.topbar__logo:hover {
+  color: var(--accent);
+}
+
+/* меню */
+
+.menu__list {
+  display: flex;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu__link {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--text-dim);
+}
+
+.menu__link:hover {
+  color: var(--text);
+  background-color: var(--bg-card);
+}
+
+.menu__link--here,
+.menu__link--here:hover {
+  color: #ffffff;
+  background-color: var(--accent);
+}
+
+/* кнопка-бургер (видна только на телефоне, см. адаптив внизу) */
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--round-s);
+  background-color: var(--bg-card);
+  cursor: pointer;
+}
+
+.burger__line {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--text);
+}
+
+.burger:hover {
+  border-color: var(--accent);
+}
+
+/* ===== 5. Главная: промо-блок премьеры ===== */
+
+/* баннер во всю ширину: фоновый кадр из фильма */
+.promo {
+  position: relative;
+  padding: 110px 0 100px;
+  border-bottom: 1px solid var(--line);
+  background: #151923 url("../images/dune2-wide.jpg") center 35% / cover no-repeat;
+  overflow: hidden;
+}
+
+/* затемнение поверх кадра: слева темнее, чтобы текст читался,
+   снизу плавный переход в цвет фона страницы */
+.promo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(10, 12, 16, 0.96) 0%, rgba(10, 12, 16, 0.78) 45%, rgba(10, 12, 16, 0.25) 100%),
+    linear-gradient(0deg, var(--bg) 0%, transparent 32%);
+}
+
+/* контент баннера поднимаем над затемнением */
+.promo__grid {
+  position: relative;
+  max-width: 640px;
+}
+
+/* маленькая подпись над заголовком с «живой» точкой */
+.promo__tag {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 var(--gap-m);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.promo__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.promo__title {
+  margin: 0 0 var(--gap-m);
+  font-size: 52px;
+  line-height: 1.05;
+}
+
+/* строка с рейтингом, годом, жанром и возрастом */
+.promo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-m);
+  margin: 0 0 var(--gap-m);
+  padding: 0;
+  list-style: none;
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+/* ссылка на страницу фильма на IMDb */
+.promo__score {
+  color: var(--gold);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.promo__score:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.promo__text {
+  margin: 0 0 var(--gap-l);
+  color: #c9ced6;
+}
+
+.promo__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-s);
+}
+
+/* подпись в углу баннера, как в титрах */
+.promo__caption {
+  position: absolute;
+  right: var(--gap-l);
+  bottom: var(--gap-l);
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ===== 6. Секции ===== */
+
+.block {
+  padding: var(--gap-xl) 0 0;
+}
+
+.block__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap-m);
+  margin-bottom: var(--gap-l);
+}
+
+.block__title {
+  margin: 0;
+  font-size: 26px;
+}
+
+/* маленькая подпись над заголовком секции */
+.block__eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.block__link {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* ===== 7. Преимущества ===== */
+
+.perks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-m);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.perks__item {
+  padding: var(--gap-l);
+  border: 1px solid var(--line);
+  border-radius: var(--round-m);
+  background-color: var(--bg-block);
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.perks__item:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.perks__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  height: 46px;
+  padding: 0 8px;
+  margin-bottom: var(--gap-m);
+  border-radius: var(--round-s);
+  background-color: rgba(229, 72, 77, 0.12);
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.perks__name {
+  margin: 0 0 var(--gap-s);
+  font-size: 18px;
+}
+
+.perks__text {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+/* ===== 8. Карточки фильмов ===== */
+
+.films {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-l);
+}
+
+/* карточка: постер во всю ширину, текст ниже */
+.film-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--round-m);
+  overflow: hidden;
+  background-color: var(--bg-card);
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.film-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.film-card__cover {
+  position: relative;
+}
+
+.film-card__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+/* метка «Новинка» / «Хит» в левом верхнем углу постера */
+.film-card__label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.film-card__label--new {
+  background-color: var(--ok);
+}
+
+/* рейтинг в правом нижнем углу постера: это ссылка на IMDb */
+.film-card__score {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 3px 10px;
+  border-radius: var(--round-s);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: var(--gold);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.film-card__score:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.film-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+  padding: var(--gap-m);
+}
+
+.film-card__genre {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.film-card__name {
+  margin: 0;
+  font-size: 18px;
+}
+
+.film-card__info {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+/* кнопки прижаты к низу карточки */
+.film-card__btns {
+  display: flex;
+  gap: var(--gap-s);
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.film-card__btns .btn {
+  flex: 1;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* ===== 9. Каталог ===== */
+
+/* строка с заголовком страницы и количеством */
+.page-head {
+  padding: var(--gap-xl) 0 var(--gap-l);
+}
+
+.page-head__title {
+  margin: 0 0 var(--gap-s);
+  font-size: 32px;
+}
+
+.page-head__note {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+/* жанры-фишки */
+
+.genres {
+  padding-bottom: var(--gap-l);
+}
+
+.genres__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-s);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.genres__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--text-dim);
+}
+
+.genres__link:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.genres__link--here,
+.genres__link--here:hover {
+  color: #ffffff;
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.genres__num {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* группа фильмов одного жанра */
+
+.film-group {
+  padding-bottom: var(--gap-l);
+}
+
+.film-group__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap-m);
+  margin-bottom: var(--gap-m);
+  padding-bottom: var(--gap-s);
+  border-bottom: 1px solid var(--line);
+}
+
+.film-group__title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.film-group__count {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+/* ===== 10. Страница фильма ===== */
+
+.film-page {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--gap-xl);
+  padding: var(--gap-xl) 0;
+}
+
+.film-page__cover {
+  position: relative;
+}
+
+.film-page__img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--round-m);
+}
+
+.film-page__label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.film-page__title {
+  margin: 0 0 var(--gap-s);
+  font-size: 32px;
+}
+
+.film-page__sub {
+  margin: 0 0 var(--gap-m);
+  color: var(--text-dim);
+}
+
+/* плашка рейтинга: ссылка на страницу фильма на IMDb */
+.film-page__score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 var(--gap-m);
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--round-s);
+  background-color: var(--bg-block);
+  color: var(--text);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.film-page__score:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.film-page__score-star {
+  color: var(--gold);
+}
+
+/* подпись «IMDb» внутри плашки */
+.film-page__score-site {
+  padding-left: 6px;
+  border-left: 1px solid var(--line);
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.film-page__desc {
+  margin: 0 0 var(--gap-l);
+  color: var(--text-dim);
+}
+
+.film-page__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-s);
+}
+
+/* таблица сведений о фильме */
+
+.facts {
+  width: 100%;
+  max-width: 620px;
+  border-collapse: collapse;
+  border: 1px solid var(--line);
+  /* Bootstrap ставит подпись таблицы снизу — возвращаем наверх */
+  caption-side: top;
+}
+
+.facts__caption {
+  margin-bottom: var(--gap-s);
+  text-align: left;
+  color: var(--text-dim);
+}
+
+.facts__row th,
+.facts__row td {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  text-align: left;
+}
+
+.facts__row th {
+  width: 220px;
+  background-color: var(--bg-block);
+  color: var(--text-dim);
+  font-weight: normal;
+}
+
+/* ===== 12. Тарифы и форма подписки ===== */
+
+.tariffs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-l);
+}
+
+.tariff {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  padding: var(--gap-l);
+  border: 1px solid var(--line);
+  border-radius: var(--round-l);
+  background-color: var(--bg-block);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+/* тариф, который выбрал пользователь (класс ставит скрипт) */
+.tariff--picked {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 12px 30px rgba(229, 72, 77, 0.12);
+}
+
+.tariff--best {
+  border-color: var(--accent);
+}
+
+.tariff__flag {
+  position: absolute;
+  top: -12px;
+  right: 16px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.tariff__name {
+  margin: 0;
+  font-size: 20px;
+}
+
+.tariff__price {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.tariff__price small {
+  font-size: 15px;
+  font-weight: normal;
+  color: var(--text-dim);
+}
+
+.tariff__list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-dim);
+}
+
+/* форма на странице подписки */
+
+.order {
+  max-width: 600px;
+  margin: var(--gap-xl) auto;
+  padding: var(--gap-l);
+  border: 1px solid var(--line);
+  border-radius: var(--round-l);
+  background-color: var(--bg-block);
+}
+
+.order__title {
+  margin-top: 0;
+}
+
+.order__done {
+  text-align: center;
+  padding: var(--gap-l) 0;
+}
+
+.order__done-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: var(--gap-m);
+  border-radius: 50%;
+  border: 2px solid var(--ok);
+  color: var(--ok);
+  font-size: 30px;
+}
+
+.order__done-text {
+  color: var(--text-dim);
+}
+
+/* ===== 13. Поля формы (и на странице, и в окне) ===== */
+
+.form__hint-line {
+  margin: 0 0 var(--gap-m);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.form__star {
+  color: var(--accent);
+}
+
+.form__row {
+  margin-bottom: var(--gap-m);
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.form__input,
+.form__select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--round-s);
+  font: inherit;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+.form__input:hover,
+.form__select:hover {
+  border-color: var(--accent);
+}
+
+.form__input:focus-visible,
+.form__select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ошибочное поле подсвечивается, aria-invalid ставит скрипт */
+.form__input[aria-invalid="true"],
+.form__select[aria-invalid="true"] {
+  border-color: var(--accent);
+  background-color: rgba(229, 72, 77, 0.08);
+}
+
+.form__tip {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.form__set {
+  margin: 0 0 var(--gap-m);
+  padding: var(--gap-m);
+  border: 1px solid var(--line);
+  border-radius: var(--round-s);
+}
+
+.form__set-title {
+  font-weight: bold;
+}
+
+.form__radio {
+  display: block;
+  margin-bottom: var(--gap-s);
+}
+
+.form__btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--gap-s);
+  margin-top: var(--gap-l);
+}
+
+/* ===== 14. Модальное окно ===== */
+
+.modal {
+  width: min(100% - 32px, 520px);
+  max-height: calc(100vh - 32px);
+  padding: 0;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--round-l);
+  color: var(--text);
+  background-color: var(--bg-block);
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal[open] {
+  animation: pop 0.2s ease-out;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal[open] {
+    animation: none;
+  }
+}
+
+body:has(.modal[open]) {
+  overflow: hidden;
+}
+
+.modal__top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-m);
+  padding: var(--gap-m) var(--gap-l);
+  border-bottom: 1px solid var(--line);
+  background-color: var(--bg-block);
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.modal__x {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--text-dim);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal__x:hover {
+  background-color: var(--bg-card);
+  color: var(--text);
+}
+
+.modal__body {
+  padding: var(--gap-l);
+}
+
+/* выбранный фильм в окне */
+.modal__film {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-m);
+  margin-bottom: var(--gap-l);
+  padding: var(--gap-s);
+  border: 1px solid var(--line);
+  border-radius: var(--round-m);
+  background-color: var(--bg);
+}
+
+.modal__film-img {
+  width: 60px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: var(--round-s);
+}
+
+.modal__film-name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.modal__film-sub {
+  margin: 0;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.modal__done {
+  text-align: center;
+  padding: var(--gap-l) 0;
+}
+
+.modal__done-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: var(--gap-m);
+  border-radius: 50%;
+  border: 2px solid var(--ok);
+  color: var(--ok);
+  font-size: 30px;
+}
+
+.modal__done-text {
+  margin: 0 0 var(--gap-l);
+  color: var(--text-dim);
+}
+
+/* ===== 15. Плашка-приглашение на подписку ===== */
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-l);
+  margin-top: var(--gap-xl);
+  padding: var(--gap-xl);
+  border: 1px solid var(--line);
+  border-radius: var(--round-l);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(229, 72, 77, 0.2), transparent 42%),
+    var(--bg-block);
+}
+
+.cta__title {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.cta__text {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+/* Промо-акция на странице подписки: картинка справа, градиентом уходит влево */
+.cta--promo {
+  position: relative;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+.cta--promo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 55%;
+  background: url("../images/interstellar-wide.jpg") right center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 70%);
+  mask-image: linear-gradient(to right, transparent, #000 70%);
+  pointer-events: none;
+}
+
+.cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 55%;
+}
+
+/* плашка «Акция» */
+.cta__badge {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .cta--promo .cta__content {
+    max-width: 100%;
+  }
+
+  /* на телефоне картинка становится фоном всей плашки, но приглушённой */
+  .cta--promo::after {
+    width: 100%;
+    opacity: 0.25;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* ===== 16. Подвал и кнопка «Наверх» ===== */
+
+.footer {
+  margin-top: var(--gap-xl);
+  padding: var(--gap-l) 0 80px;
+  border-top: 1px solid var(--line);
+  background-color: var(--bg-block);
+}
+
+.footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-s);
+}
+
+.footer__text {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.up {
+  position: fixed;
+  right: var(--gap-l);
+  bottom: var(--gap-l);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.up:hover {
+  background-color: var(--accent-hover);
+  color: #ffffff;
+}
+
+/* хлебные крошки */
+
+.crumbs {
+  padding-top: var(--gap-l);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.crumbs a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+.crumbs a:hover {
+  color: var(--accent);
+}
+
+/* ===== 17. Адаптивность ===== */
+
+/* планшет */
+@media (max-width: 900px) {
+  .films {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tariffs,
+  .perks {
+    grid-template-columns: 1fr;
+  }
+
+  .film-page {
+    grid-template-columns: 1fr;
+  }
+
+  .film-page__cover {
+    max-width: 320px;
+  }
+
+  .promo {
+    padding: 80px 0 90px;
+  }
+
+  .promo__title {
+    font-size: 38px;
+  }
+
+  /* на планшете затемнение равномерное: кадр виден везде */
+  .promo::before {
+    background:
+      linear-gradient(90deg, rgba(10, 12, 16, 0.92), rgba(10, 12, 16, 0.55)),
+      linear-gradient(0deg, var(--bg) 0%, transparent 45%);
+  }
+}
+
+/* телефон: меню прячется за бургер */
+@media (max-width: 768px) {
+  .burger {
+    display: inline-flex;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    border-bottom: 1px solid var(--line);
+    background-color: var(--bg-block);
+  }
+
+  .topbar {
+    position: relative;
+  }
+
+  .menu--open {
+    display: block;
+  }
+
+  .menu__list {
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--gap-m) var(--gap-l);
+  }
+
+  .menu__link {
+    display: block;
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  /* кнопки карточки встают друг под другом, иначе не влезают */
+  .film-card__btns {
+    flex-direction: column;
+  }
+
+  .promo {
+    padding: 64px 0 80px;
+  }
+
+  .promo__title {
+    font-size: 30px;
+  }
+
+  .promo__caption {
+    display: none;
+  }
+
+  .cta {
+    padding: var(--gap-l);
+  }
+
+  .films {
+    gap: var(--gap-m);
+  }
+
+  .order {
+    padding: var(--gap-m);
+  }
+}
+
+/* ===== 20. Большой футер в стиле онлайн-кинотеатров (Кинопоиск, IVI) ===== */
+
+/* колонки футера размечаем сеткой Bootstrap (row + col), оформление — своё */
+.footer__brand-text {
+  margin: var(--gap-s) 0 var(--gap-m);
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.footer__col-title {
+  margin: 0 0 var(--gap-m);
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* списки ссылок в колонках */
+.footer__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__list li {
+  margin-bottom: 10px;
+}
+
+.footer__link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* круглые кнопки соцсетей */
+
+/* телефон поддержки, как на IVI */
+.footer__phone {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer__phone:hover {
+  color: var(--accent);
+}
+
+.footer__phone-note {
+  margin: 0 0 var(--gap-m);
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+/* разделитель между колонками и нижней строкой */
+.footer__divider {
+  margin: var(--gap-l) 0 var(--gap-m);
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+/* нижняя строка: копирайт, возраст и документы */
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-s) var(--gap-l);
+}
+
+.footer__copy {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.footer__docs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-l);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__docs .footer__link,
+.footer__docs .footer__text {
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+/* плашка возрастного ограничения */
+.footer__age {
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--round-s);
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+/* ===== 21. Карусель премьер, лента фильмов и поиск
+   (вдохновение: главные страницы IVI и Кинопоиска) ===== */
+
+/* --- карусель премьер на главной (компонент Bootstrap) --- */
+
+.promo {
+  padding: 0;
+  background: none;
+}
+
+/* старое затемнение секции больше не нужно: оно теперь внутри каждого слайда */
+.promo::before {
+  content: none;
+}
+
+/* каждый слайд — широкий кадр фоном, как на IVI */
+.promo__slide {
+  position: relative;
+  min-height: 560px;
+  padding: 110px 0 100px;
+  background-position: center 35%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* затемнение поверх кадра: слева темнее, чтобы текст читался,
+   снизу плавный переход в цвет фона страницы */
+.promo__slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(10, 12, 16, 0.96) 0%, rgba(10, 12, 16, 0.78) 45%, rgba(10, 12, 16, 0.25) 100%),
+    linear-gradient(0deg, var(--bg) 0%, transparent 32%);
+}
+
+/* стрелки карусели: круглые кнопки по бокам */
+.promo .carousel-control-prev,
+.promo .carousel-control-next {
+  width: 48px;
+  height: 48px;
+  margin: auto 24px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background-color: rgba(18, 20, 25, 0.7);
+  opacity: 1;
+}
+
+.promo .carousel-control-prev:hover,
+.promo .carousel-control-next:hover {
+  background-color: var(--accent);
+}
+
+/* точки-индикаторы под баннером */
+.promo .carousel-indicators {
+  margin-bottom: 14px;
+}
+
+.promo .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--line);
+}
+
+.promo .carousel-indicators .active {
+  background-color: var(--accent);
+}
+
+/* --- горизонтальная лента фильмов со стрелками, как на IVI --- */
+
+.rail-wrap {
+  position: relative;
+}
+
+.rail {
+  display: flex;
+  gap: var(--gap-m);
+  padding: 4px 4px 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* прячем полосу прокрутки, как на IVI */
+  scrollbar-width: none;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+/* карточка в ленте фиксированной ширины */
+.rail .film-card {
+  flex: 0 0 230px;
+  scroll-snap-align: start;
+}
+
+/* круглые стрелки по краям ленты, видны только на компьютере */
+.rail__arrow {
+  position: absolute;
+  top: 38%;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background-color: rgba(18, 20, 25, 0.85);
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.rail__arrow:hover {
+  background-color: var(--accent);
+}
+
+.rail__arrow--prev {
+  left: -18px;
+}
+
+.rail__arrow--next {
+  right: -18px;
+}
+
+/* --- поиск в шапке, как на Кинопоиске и IVI --- */
+
+.search {
+  flex: 0 1 260px;
+}
+
+.search__input {
+  width: 100%;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background-color: var(--bg-card);
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+}
+
+.search__input::placeholder {
+  color: var(--text-dim);
+}
+
+.search__input:focus {
+  border-color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .promo__slide {
+    min-height: 480px;
+    padding: 80px 0 90px;
+  }
+
+  /* на телефоне и планшете лента листается пальцем, стрелки не нужны */
+  .rail__arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* поиск прячем: в мобильном меню он не помещается */
+  .search {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .promo__slide {
+    min-height: 420px;
+    padding: 64px 0 80px;
+  }
+
+  .promo .carousel-control-prev,
+  .promo .carousel-control-next {
+    display: none;
+  }
+
+  .rail .film-card {
+    flex-basis: 170px;
+  }
+}
+
+/* ===== 22. Расписание сеансов и частые вопросы ===== */
+
+/* таблица ближайших сеансов на странице «Фильмы» */
+.sessions {
+  width: 100%;
+  margin-top: var(--gap-m);
+  border: 1px solid var(--line);
+  border-radius: var(--round-m);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  background-color: var(--bg-block);
+}
+
+.sessions th,
+.sessions td {
+  padding: 14px var(--gap-l);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.sessions thead th {
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.sessions tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.sessions tbody tr:hover {
+  background-color: var(--bg-card);
+}
+
+.sessions__film {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sessions__film:hover {
+  color: var(--accent);
+}
+
+.sessions__date {
+  white-space: nowrap;
+}
+
+.sessions__quality,
+.sessions__episode {
+  color: var(--gold);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* частые вопросы на странице подписки: details/summary с маркером «плюс/минус» */
+/* вопросы центрируем на странице */
+.faq {
+  display: grid;
+  gap: var(--gap-s);
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* заголовок блока вопросов тоже по центру */
+#faq .block__head {
+  justify-content: center;
+  text-align: center;
+}
+
+.faq__item {
+  border: 1px solid var(--line);
+  border-radius: var(--round-m);
+  background-color: var(--bg-block);
+}
+
+.faq__item[open] {
+  border-color: var(--accent);
+}
+
+.faq__q {
+  position: relative;
+  padding: var(--gap-m) 48px var(--gap-m) var(--gap-l);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__q::-webkit-details-marker {
+  display: none;
+}
+
+.faq__q::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: var(--gap-l);
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.faq__item[open] .faq__q::after {
+  content: "\2212";
+}
+
+.faq__q:hover {
+  color: var(--accent);
+}
+
+.faq__a {
+  margin: 0;
+  padding: 0 var(--gap-l) var(--gap-m);
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  /* на телефоне таблица сеансов прокручивается по горизонтали */
+  .sessions-wrap {
+    overflow-x: auto;
+  }
+}

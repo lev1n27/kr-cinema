@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Тарифы КиноВечер и форма оформления подписки: имя, почта, телефон, тариф и способ оплаты.">
+  <title>Подписка — КиноВечер</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Подписка — КиноВечер">
+  <meta property="og:description" content="Тарифы онлайн-кинотеатра КиноВечер и форма оформления подписки.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="topbar" id="top">
+    <div class="wrap topbar__row">
+      <a class="topbar__logo" href="index.html">Кино<span>Вечер</span></a>
+
+      <!-- Поиск по каталогу, как на Кинопоиске; на телефоне скрыт -->
+      <form class="search" action="movies.html" role="search">
+        <input class="search__input" type="search" name="q" placeholder="Фильмы, сериалы" aria-label="Поиск по каталогу">
+      </form>
+
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="sr-only">Открыть меню</span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Основная навигация">
+        <ul class="menu__list">
+          <li><a class="menu__link" href="index.html">Главная</a></li>
+          <li><a class="menu__link" href="movies.html">Фильмы</a></li>
+          <li><a class="menu__link" href="series.html">Сериалы</a></li>
+          <li><a class="menu__link" href="kids.html">Детям</a></li>
+          <li><a class="menu__link menu__link--here" href="subscription.html" aria-current="page">Подписка</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="crumbs">
+        <a href="index.html">Главная</a> / Подписка
+      </div>
+
+      <div class="page-head">
+        <h1 class="page-head__title">Тарифы</h1>
+        <p class="page-head__note">Выберите тариф и смотрите весь каталог без ограничений.</p>
+      </div>
+
+      <!-- Промо-акция: картинка справа, градиентом растворяется влево -->
+      <div class="cta cta--promo">
+        <div class="cta__content">
+          <p class="cta__badge">Акция</p>
+          <h2 class="cta__title">Первые 7 дней — бесплатно на любом тарифе</h2>
+          <p class="cta__text">Оформите подписку и смотрите весь каталог без ограничений. Отмена — в один клик.</p>
+        </div>
+      </div>
+
+      <!-- Сетка тарифов на Bootstrap: row + col-12 col-md-4 -->
+      <div class="row g-4 mt-2">
+        <div class="col-12 col-md-4">
+        <article class="tariff h-100" data-plan="basic">
+          <h2 class="tariff__name">Базовый</h2>
+          <p class="tariff__price">199 руб. <small>/ мес</small></p>
+          <ul class="tariff__list">
+            <li>все фильмы, сериалы и мультфильмы;</li>
+            <li>качество Full HD;</li>
+            <li>одно устройство;</li>
+            <li>без рекламы.</li>
+          </ul>
+        </article>
+        </div>
+
+        <div class="col-12 col-md-4">
+        <article class="tariff tariff--best h-100" data-plan="standard">
+          <span class="tariff__flag">Выгодно</span>
+          <h2 class="tariff__name">Стандарт</h2>
+          <p class="tariff__price">349 руб. <small>/ мес</small></p>
+          <ul class="tariff__list">
+            <li>все фильмы, сериалы и мультфильмы;</li>
+            <li>качество 4K;</li>
+            <li>два устройства;</li>
+            <li>скачивание на телефон;</li>
+            <li>без рекламы.</li>
+          </ul>
+        </article>
+        </div>
+
+        <div class="col-12 col-md-4">
+        <article class="tariff h-100" data-plan="premium">
+          <h2 class="tariff__name">Премиум</h2>
+          <p class="tariff__price">499 руб. <small>/ мес</small></p>
+          <ul class="tariff__list">
+            <li>все фильмы, сериалы и мультфильмы;</li>
+            <li>качество 4K и объёмный звук;</li>
+            <li>четыре устройства;</li>
+            <li>скачивание на телефон;</li>
+            <li>ранний доступ к премьерам.</li>
+          </ul>
+        </article>
+        </div>
+      </div>
+
+      <!-- Форма оформления подписки, обработка в js/main.js -->
+      <section class="order" id="order">
+        <h2 class="order__title">Оформление подписки</h2>
+
+        <form class="form" id="subscribe-form" action="#" method="post" novalidate>
+          <p class="form__hint-line">
+            Поля со <span class="form__star" aria-hidden="true">*</span> обязательны для заполнения.
+          </p>
+
+          <div class="form__row">
+            <label class="form__label" for="subscribe-name">
+              Имя <span class="form__star" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="form__input"
+              id="subscribe-name"
+              name="name"
+              type="text"
+              placeholder="Введите ваше имя"
+              minlength="2"
+              autocomplete="given-name"
+              required
+            >
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" for="subscribe-email">
+              E-mail <span class="form__star" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="form__input"
+              id="subscribe-email"
+              name="email"
+              type="email"
+              placeholder="example@mail.ru"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" for="subscribe-phone">
+              Телефон <span class="form__star" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="form__input"
+              id="subscribe-phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              placeholder="+7 (900) 000-00-00"
+              pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+              aria-describedby="subscribe-phone-tip"
+              required
+            >
+            <small class="form__tip" id="subscribe-phone-tip">Формат: +7 (900) 000-00-00</small>
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" for="subscribe-plan">
+              Тариф <span class="form__star" aria-hidden="true">*</span>
+            </label>
+            <select class="form__select" id="subscribe-plan" name="plan" required>
+              <option value="">Выберите тариф</option>
+              <option value="basic">Базовый — 199 руб./мес</option>
+              <option value="standard">Стандарт — 349 руб./мес</option>
+              <option value="premium">Премиум — 499 руб./мес</option>
+            </select>
+          </div>
+
+          <fieldset class="form__set">
+            <legend class="form__set-title">
+              Способ оплаты <span class="form__star" aria-hidden="true">*</span>
+            </legend>
+
+            <label class="form__radio">
+              <input type="radio" name="payment" value="card" required>
+              Банковская карта
+            </label>
+            <label class="form__radio">
+              <input type="radio" name="payment" value="sbp">
+              Система быстрых платежей (СБП)
+            </label>
+            <label class="form__radio">
+              <input type="radio" name="payment" value="phone">
+              Со счёта мобильного телефона
+            </label>
+          </fieldset>
+
+          <div class="form__row">
+            <label class="form__label">
+              <input id="subscribe-agreement" name="agreement" type="checkbox" required>
+              Я согласен на обработку данных <span class="form__star" aria-hidden="true">*</span>
+            </label>
+          </div>
+
+          <div class="form__btns">
+            <button class="btn btn--fill" type="submit">Оформить подписку</button>
+          </div>
+        </form>
+
+        <!-- показывается вместо формы после успешной отправки -->
+        <div class="order__done" id="subscribe-success" role="status" hidden>
+          <span class="order__done-icon" aria-hidden="true">&#10003;</span>
+          <h3>Подписка оформлена</h3>
+          <p class="order__done-text" id="subscribe-success-text"></p>
+        </div>
+      </section>
+
+      <section class="block" id="faq">
+        <div class="block__head">
+          <h2 class="block__title">Часто задаваемые вопросы</h2>
+        </div>
+
+        <div class="faq">
+          <details class="faq__item" id="how">
+            <summary class="faq__q">Как оформить подписку?</summary>
+            <p class="faq__a">Выберите тариф на этой странице, заполните форму ниже — имя, почту и телефон, — укажите способ оплаты и нажмите «Оформить подписку». Подписка включается сразу после оплаты, первые 7 дней стоят 1 ₽.</p>
+          </details>
+          <details class="faq__item" id="price">
+            <summary class="faq__q">Сколько стоит подписка?</summary>
+            <p class="faq__a">Есть три тарифа: «Базовый» — 199 ₽ в месяц, «Стандарт» — 349 ₽, «Премиум» — 499 ₽. На любом тарифе первые 7 дней — за 1 ₽.</p>
+          </details>
+          <details class="faq__item" id="content">
+            <summary class="faq__q">Что входит в подписку?</summary>
+            <p class="faq__a">Весь каталог «КиноВечера»: фильмы, сериалы и мультфильмы из раздела «Детям» — в качестве до 4K и без рекламы.</p>
+          </details>
+          <details class="faq__item" id="cancel">
+            <summary class="faq__q">Можно ли отменить подписку?</summary>
+            <p class="faq__a">Да, в любой момент — на этой странице или по телефону поддержки 8 800 100-24-47. Доступ к каталогу сохранится до конца уже оплаченного месяца.</p>
+          </details>
+          <details class="faq__item" id="devices">
+            <summary class="faq__q">На каких устройствах можно смотреть?</summary>
+            <p class="faq__a">На телефоне, планшете, компьютере и телевизоре. Количество одновременных устройств зависит от тарифа: от одного на «Базовом» до четырёх на «Премиуме».</p>
+          </details>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <!-- Колонки футера, как у больших онлайн-кинотеатров: сетка Bootstrap (row + col) -->
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="topbar__logo" href="index.html">Кино<span>Вечер</span></a>
+          <p class="footer__brand-text">
+            Онлайн-кинотеатр с фильмами и сериалами в качестве 4K.
+            Без рекламы, на любом устройстве.
+          </p>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h2 class="footer__col-title">Разделы</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="index.html">Главная</a></li>
+            <li><a class="footer__link" href="movies.html">Фильмы</a></li>
+            <li><a class="footer__link" href="series.html">Сериалы</a></li>
+            <li><a class="footer__link" href="kids.html">Детям</a></li>
+            <li><a class="footer__link" href="subscription.html">Подписка</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-3">
+          <h2 class="footer__col-title">Зрителям</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="subscription.html#how">Как оформить подписку</a></li>
+            <li><a class="footer__link" href="subscription.html#faq">Частые вопросы</a></li>
+            <li><a class="footer__link" href="movies.html#premieres">Премьеры недели</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-3">
+          <h2 class="footer__col-title">Поддержка</h2>
+          <a class="footer__phone" href="tel:88001002447">8 800 100-24-47</a>
+          <p class="footer__phone-note">Бесплатно по России, круглосуточно</p>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="mailto:help@kinovecher.ru">help@kinovecher.ru</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer__divider">
+
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 КиноВечер. Учебный проект, все фильмы - собственность правообладателей.</p>
+        <ul class="footer__docs">
+          <li><span class="footer__text">Пользовательское соглашение</span></li>
+          <li><span class="footer__text">Политика конфиденциальности</span></li>
+        </ul>
+        <span class="footer__age">12+</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="up" href="#top">Наверх</a>
+</body>
+</html>
