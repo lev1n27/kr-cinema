@@ -113,14 +113,64 @@
         </div>
       </section>
 
-      <!-- Фильтры по студиям -->
-      <nav class="genres" aria-label="Фильтр по студиям">
-        <ul class="genres__list">
-          <li><button class="genres__link genres__link--here" type="button" data-filter="all" aria-pressed="true">Все <span class="genres__num">6</span></button></li>
-          <li><button class="genres__link" type="button" data-filter="disney" aria-pressed="false">Disney и Pixar <span class="genres__num">4</span></button></li>
-          <li><button class="genres__link" type="button" data-filter="dreamworks" aria-pressed="false">DreamWorks <span class="genres__num">2</span></button></li>
-        </ul>
-      </nav>
+      <section class="filters" aria-label="Фильтры каталога">
+        <div class="filters__grid">
+          <label class="filters__field">
+            <span class="sr-only">Студия</span>
+            <select class="filters__select" data-filter-key="genre" aria-label="Студия">
+              <option value="all">Студии: все</option>
+              <option value="disney">Disney и Pixar</option>
+              <option value="dreamworks">DreamWorks</option>
+            </select>
+          </label>
+          <label class="filters__field">
+            <span class="sr-only">Возраст</span>
+            <select class="filters__select" data-filter-key="age" aria-label="Возраст">
+              <option value="all">Возраст: любой</option>
+              <option value="0">0+</option>
+              <option value="6">6+</option>
+            </select>
+          </label>
+          <label class="filters__field">
+            <span class="sr-only">Год выпуска</span>
+            <select class="filters__select" data-filter-key="year" aria-label="Год выпуска">
+              <option value="all">Годы: все</option>
+              <option value="2016">2016</option>
+              <option value="2013">2013</option>
+              <option value="2010">2010</option>
+              <option value="2006">2006</option>
+              <option value="2001">2001</option>
+              <option value="1994">1994</option>
+            </select>
+          </label>
+          <label class="filters__field">
+            <span class="sr-only">Минимальный рейтинг</span>
+            <select class="filters__select" data-filter-key="rating" aria-label="Минимальный рейтинг">
+              <option value="all">Рейтинг: любой</option>
+              <option value="8">8,0 и выше</option>
+              <option value="7">7,0 и выше</option>
+            </select>
+          </label>
+          <label class="filters__field">
+            <span class="sr-only">Сортировка</span>
+            <select class="filters__select" data-sort aria-label="Сортировка">
+              <option value="popular">По популярности</option>
+              <option value="rating">Сначала с высоким рейтингом</option>
+              <option value="newest">Сначала новые</option>
+              <option value="oldest">Сначала старые</option>
+              <option value="title">По названию</option>
+            </select>
+          </label>
+        </div>
+        <div class="filters__bottom">
+          <div class="filters__quick">
+            <button class="filters__chip" type="button" data-quick-filter="little" aria-pressed="false">Для самых маленьких · 0+</button>
+            <button class="filters__chip" type="button" data-quick-filter="top" aria-pressed="false">Рейтинг 8,5+</button>
+          </div>
+          <button class="filters__reset" type="button" data-filters-reset disabled>Сбросить фильтры</button>
+        </div>
+      </section>
+      <p class="filters__empty" data-filters-empty role="status" hidden>Ничего не найдено. Попробуйте изменить или сбросить фильтры.</p>
       <p class="page-head__note" style="margin-top:-8px">
         Только добрый контент с возрастными метками 0+ и 6+ — без рекламы и лишнего.
       </p>

@@ -188,57 +188,147 @@ if (phoneInput) {
 const searchInput = document.querySelector(".search__input");
 const query = new URLSearchParams(window.location.search).get("q")?.trim();
 const normalizedQuery = query?.toLocaleLowerCase("ru") || "";
-const filter = document.querySelector(".genres");
-const filterButtons = filter?.querySelectorAll("[data-filter]") || [];
+const filtersPanel = document.querySelector(".filters");
+const filterSelects = [...document.querySelectorAll("[data-filter-key]")];
+const sortSelect = document.querySelector("[data-sort]");
+const quickFilterButtons = [...document.querySelectorAll("[data-quick-filter]")];
+const resetFiltersButton = document.querySelector("[data-filters-reset]");
+const filtersEmpty = document.querySelector("[data-filters-empty]");
 const catalogGroups = [...document.querySelectorAll(".film-group")].filter((group) => {
   return group.querySelector(".films");
 });
 const pageNote = document.querySelector(".page-head__note");
 const initialPageNote = pageNote?.textContent || "";
-let activeFilter = "all";
+const quickFilters = new Set();
+const cardDetails = new WeakMap();
 
 if (searchInput && query) searchInput.value = query;
 
+catalogGroups.forEach((group) => {
+  group.querySelectorAll(".film-card").forEach((card, index) => {
+    const info = card.querySelector(".film-card__info")?.textContent || "";
+    const age = info.match(/(\d+)\+/)?.[1];
+    cardDetails.set(card, {
+      index,
+      title: card.querySelector(".film-card__name")?.textContent.trim() || "",
+      year: Number.parseInt(info, 10) || 0,
+      rating: Number.parseFloat(
+        (card.querySelector(".film-card__score")?.textContent || "0")
+          .replace("★", "")
+          .trim()
+          .replace(",", "."),
+      ),
+      age: age === undefined ? null : Number(age),
+      isNew: Boolean(card.querySelector(".film-card__label--new")),
+    });
+  });
+});
+
+function matchesFilters(card, group, selectedFilters) {
+  const details = cardDetails.get(card);
+  const countries = (card.dataset.country || "").split(" ");
+
+  if (normalizedQuery && !card.textContent.toLocaleLowerCase("ru").includes(normalizedQuery)) {
+    return false;
+  }
+  if (selectedFilters.genre && selectedFilters.genre !== "all" && group.id !== selectedFilters.genre) {
+    return false;
+  }
+  if (selectedFilters.country && selectedFilters.country !== "all" && !countries.includes(selectedFilters.country)) {
+    return false;
+  }
+  if (selectedFilters.year && selectedFilters.year !== "all" && details.year !== Number(selectedFilters.year)) {
+    return false;
+  }
+  if (selectedFilters.age && selectedFilters.age !== "all" && details.age !== Number(selectedFilters.age)) {
+    return false;
+  }
+  if (selectedFilters.rating && selectedFilters.rating !== "all" && details.rating < Number(selectedFilters.rating)) {
+    return false;
+  }
+  if (quickFilters.has("new") && !details.isNew) return false;
+  if (quickFilters.has("top") && details.rating < 8.5) return false;
+  if (quickFilters.has("little") && details.age !== 0) return false;
+  return true;
+}
+
+function sortCards(cards) {
+  const sorting = sortSelect?.value || "popular";
+  return cards.sort((first, second) => {
+    const a = cardDetails.get(first);
+    const b = cardDetails.get(second);
+    if (sorting === "rating") return b.rating - a.rating || a.index - b.index;
+    if (sorting === "newest") return b.year - a.year || a.index - b.index;
+    if (sorting === "oldest") return a.year - b.year || a.index - b.index;
+    if (sorting === "title") return a.title.localeCompare(b.title, "ru");
+    return a.index - b.index;
+  });
+}
+
 function updateCatalog() {
+  const selectedFilters = Object.fromEntries(
+    filterSelects.map((select) => [select.dataset.filterKey, select.value]),
+  );
+  const hasFilters = Object.values(selectedFilters).some((value) => value !== "all") || quickFilters.size > 0;
   let matches = 0;
 
   catalogGroups.forEach((group) => {
-    const isSelectedGroup = activeFilter === "all" || group.id === activeFilter;
+    const list = group.querySelector(".films");
+    const cards = [...list.querySelectorAll(".film-card")];
     let visibleCards = 0;
 
-    group.querySelectorAll(".film-card").forEach((card) => {
-      const matchesSearch = !normalizedQuery || card.textContent
-        .toLocaleLowerCase("ru")
-        .includes(normalizedQuery);
-      card.hidden = !matchesSearch;
-      if (matchesSearch) visibleCards += 1;
+    sortCards(cards).forEach((card) => {
+      list.append(card);
+      const isVisible = matchesFilters(card, group, selectedFilters);
+      card.hidden = !isVisible;
+      if (isVisible) visibleCards += 1;
     });
 
-    group.hidden = !isSelectedGroup || visibleCards === 0;
-    if (isSelectedGroup) matches += visibleCards;
+    group.hidden = visibleCards === 0;
+    matches += visibleCards;
   });
 
+  if (filtersEmpty) filtersEmpty.hidden = matches > 0;
+  if (resetFiltersButton) {
+    resetFiltersButton.disabled = !hasFilters && (!sortSelect || sortSelect.value === "popular");
+  }
   if (!pageNote) return;
   pageNote.setAttribute("aria-live", "polite");
   if (query) {
     pageNote.textContent = `По запросу «${query}» найдено: ${matches}`;
-  } else if (activeFilter !== "all") {
+  } else if (hasFilters) {
     pageNote.textContent = `Показано: ${matches}`;
   } else {
     pageNote.textContent = initialPageNote;
   }
 }
 
-filterButtons.forEach((button) => {
+filterSelects.forEach((select) => {
+  select.addEventListener("change", updateCatalog);
+});
+
+sortSelect?.addEventListener("change", updateCatalog);
+
+quickFilterButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-    filterButtons.forEach((item) => {
-      const isActive = item === button;
-      item.classList.toggle("genres__link--here", isActive);
-      item.setAttribute("aria-pressed", String(isActive));
-    });
+    const name = button.dataset.quickFilter;
+    if (quickFilters.has(name)) quickFilters.delete(name);
+    else quickFilters.add(name);
+    button.setAttribute("aria-pressed", String(quickFilters.has(name)));
     updateCatalog();
   });
 });
 
-if (query) updateCatalog();
+resetFiltersButton?.addEventListener("click", () => {
+  filterSelects.forEach((select) => {
+    select.value = "all";
+  });
+  if (sortSelect) sortSelect.value = "popular";
+  quickFilters.clear();
+  quickFilterButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", "false");
+  });
+  updateCatalog();
+});
+
+if (filtersPanel || query) updateCatalog();

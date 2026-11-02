@@ -119,16 +119,68 @@
         </div>
       </section>
 
-      <!-- Фильтры по жанрам -->
-      <nav class="genres" aria-label="Фильтр по жанрам">
-        <ul class="genres__list">
-          <li><button class="genres__link genres__link--here" type="button" data-filter="all" aria-pressed="true">Все <span class="genres__num">8</span></button></li>
-          <li><button class="genres__link" type="button" data-filter="scifi" aria-pressed="false">Фантастика <span class="genres__num">2</span></button></li>
-          <li><button class="genres__link" type="button" data-filter="drama" aria-pressed="false">Драма <span class="genres__num">2</span></button></li>
-          <li><button class="genres__link" type="button" data-filter="thriller" aria-pressed="false">Триллер <span class="genres__num">2</span></button></li>
-          <li><button class="genres__link" type="button" data-filter="adventure" aria-pressed="false">Приключения <span class="genres__num">2</span></button></li>
-        </ul>
-      </nav>
+      <section class="filters" aria-label="Фильтры каталога">
+        <div class="filters__grid">
+          <label class="filters__field">
+            <span class="sr-only">Жанр</span>
+            <select class="filters__select" data-filter-key="genre" aria-label="Жанр">
+              <option value="all">Жанры: все</option>
+              <option value="scifi">Фантастика</option>
+              <option value="drama">Драма</option>
+              <option value="thriller">Триллер</option>
+              <option value="adventure">Приключения</option>
+            </select>
+          </label>
+          <label class="filters__field">
+            <span class="sr-only">Страна</span>
+            <select class="filters__select" data-filter-key="country" aria-label="Страна">
+              <option value="all">Страны: все</option>
+              <option value="usa">США</option>
+              <option value="uk">Великобритания</option>
+            </select>
+          </label>
+          <label class="filters__field">
+            <span class="sr-only">Год выпуска</span>
+            <select class="filters__select" data-filter-key="year" aria-label="Год выпуска">
+              <option value="all">Годы: все</option>
+              <option value="2024">2024</option>
+              <option value="2017">2017</option>
+              <option value="2014">2014</option>
+              <option value="2010">2010</option>
+              <option value="2009">2009</option>
+              <option value="2003">2003</option>
+              <option value="1994">1994</option>
+            </select>
+          </label>
+          <label class="filters__field">
+            <span class="sr-only">Минимальный рейтинг</span>
+            <select class="filters__select" data-filter-key="rating" aria-label="Минимальный рейтинг">
+              <option value="all">Рейтинг: любой</option>
+              <option value="9">9,0 и выше</option>
+              <option value="8">8,0 и выше</option>
+              <option value="7">7,0 и выше</option>
+            </select>
+          </label>
+          <label class="filters__field">
+            <span class="sr-only">Сортировка</span>
+            <select class="filters__select" data-sort aria-label="Сортировка">
+              <option value="popular">По популярности</option>
+              <option value="rating">Сначала с высоким рейтингом</option>
+              <option value="newest">Сначала новые</option>
+              <option value="oldest">Сначала старые</option>
+              <option value="title">По названию</option>
+            </select>
+          </label>
+        </div>
+        <div class="filters__bottom">
+          <div class="filters__quick">
+            <button class="filters__chip" type="button" data-quick-filter="new" aria-pressed="false">Новинки</button>
+            <button class="filters__chip" type="button" data-quick-filter="top" aria-pressed="false">Рейтинг 8,5+</button>
+          </div>
+          <button class="filters__reset" type="button" data-filters-reset disabled>Сбросить фильтры</button>
+        </div>
+      </section>
+      <p class="filters__empty" data-filters-empty role="status" hidden>Ничего не найдено. Попробуйте изменить или сбросить фильтры.</p>
 
       <section class="film-group" id="scifi">
         <div class="film-group__head">
@@ -137,7 +189,7 @@
         </div>
 
         <div class="films">
-          <article class="film-card">
+          <article class="film-card" data-country="usa">
             <div class="film-card__cover">
               <span class="film-card__label film-card__label--new">Новинка</span>
               <img
@@ -167,7 +219,7 @@
             </div>
           </article>
 
-          <article class="film-card">
+          <article class="film-card" data-country="usa uk">
             <div class="film-card__cover">
               <span class="film-card__label">Хит</span>
               <img
@@ -206,7 +258,7 @@
         </div>
 
         <div class="films">
-          <article class="film-card">
+          <article class="film-card" data-country="usa">
             <div class="film-card__cover">
               <img
                 class="film-card__img"
@@ -235,7 +287,7 @@
             </div>
           </article>
 
-          <article class="film-card">
+          <article class="film-card" data-country="usa">
             <div class="film-card__cover">
               <img
                 class="film-card__img"
@@ -273,7 +325,7 @@
         </div>
 
         <div class="films">
-          <article class="film-card">
+          <article class="film-card" data-country="usa uk">
             <div class="film-card__cover">
               <img
                 class="film-card__img"
@@ -302,7 +354,7 @@
             </div>
           </article>
 
-          <article class="film-card">
+          <article class="film-card" data-country="usa">
             <div class="film-card__cover">
               <img
                 class="film-card__img"
@@ -340,7 +392,7 @@
         </div>
 
         <div class="films">
-          <article class="film-card">
+          <article class="film-card" data-country="usa">
             <div class="film-card__cover">
               <img
                 class="film-card__img"
@@ -369,7 +421,7 @@
             </div>
           </article>
 
-          <article class="film-card">
+          <article class="film-card" data-country="usa">
             <div class="film-card__cover">
               <img
                 class="film-card__img"
