@@ -113,14 +113,14 @@
         </div>
       </section>
 
-      <!-- Жанры-фишки: якорные ссылки на группы ниже -->
-      <nav class="genres" aria-label="Навигация по жанрам">
+      <!-- Фильтры по жанрам -->
+      <nav class="genres" aria-label="Фильтр по жанрам">
         <ul class="genres__list">
-          <li><a class="genres__link genres__link--here" href="#drama" aria-current="true">Все <span class="genres__num">6</span></a></li>
-          <li><a class="genres__link" href="#drama">Драмы <span class="genres__num">2</span></a></li>
-          <li><a class="genres__link" href="#fantasy">Фэнтези и фантастика <span class="genres__num">2</span></a></li>
-          <li><a class="genres__link" href="#detective">Детективы <span class="genres__num">1</span></a></li>
-          <li><a class="genres__link" href="#comedy">Комедии <span class="genres__num">1</span></a></li>
+          <li><button class="genres__link genres__link--here" type="button" data-filter="all" aria-pressed="true">Все <span class="genres__num">6</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="drama" aria-pressed="false">Драмы <span class="genres__num">2</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="fantasy" aria-pressed="false">Фэнтези и фантастика <span class="genres__num">2</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="detective" aria-pressed="false">Детективы <span class="genres__num">1</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="comedy" aria-pressed="false">Комедии <span class="genres__num">1</span></button></li>
         </ul>
       </nav>
 

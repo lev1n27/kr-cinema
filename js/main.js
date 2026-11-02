@@ -187,23 +187,58 @@ if (phoneInput) {
 
 const searchInput = document.querySelector(".search__input");
 const query = new URLSearchParams(window.location.search).get("q")?.trim();
+const normalizedQuery = query?.toLocaleLowerCase("ru") || "";
+const filter = document.querySelector(".genres");
+const filterButtons = filter?.querySelectorAll("[data-filter]") || [];
+const catalogGroups = [...document.querySelectorAll(".film-group")].filter((group) => {
+  return group.querySelector(".films");
+});
+const pageNote = document.querySelector(".page-head__note");
+const initialPageNote = pageNote?.textContent || "";
+let activeFilter = "all";
 
-if (searchInput && query) {
-  searchInput.value = query;
-  const normalizedQuery = query.toLocaleLowerCase("ru");
+if (searchInput && query) searchInput.value = query;
+
+function updateCatalog() {
   let matches = 0;
 
-  document.querySelectorAll(".film-card").forEach((card) => {
-    const isMatch = card.textContent.toLocaleLowerCase("ru").includes(normalizedQuery);
-    card.hidden = !isMatch;
-    if (isMatch) matches += 1;
+  catalogGroups.forEach((group) => {
+    const isSelectedGroup = activeFilter === "all" || group.id === activeFilter;
+    let visibleCards = 0;
+
+    group.querySelectorAll(".film-card").forEach((card) => {
+      const matchesSearch = !normalizedQuery || card.textContent
+        .toLocaleLowerCase("ru")
+        .includes(normalizedQuery);
+      card.hidden = !matchesSearch;
+      if (matchesSearch) visibleCards += 1;
+    });
+
+    group.hidden = !isSelectedGroup || visibleCards === 0;
+    if (isSelectedGroup) matches += visibleCards;
   });
 
-  document.querySelectorAll(".film-group").forEach((group) => {
-    if (!group.querySelector(".films")) return;
-    group.hidden = !group.querySelector(".film-card:not([hidden])");
-  });
-
-  const note = document.querySelector(".page-head__note");
-  if (note) note.textContent = `По запросу «${query}» найдено: ${matches}`;
+  if (!pageNote) return;
+  pageNote.setAttribute("aria-live", "polite");
+  if (query) {
+    pageNote.textContent = `По запросу «${query}» найдено: ${matches}`;
+  } else if (activeFilter !== "all") {
+    pageNote.textContent = `Показано: ${matches}`;
+  } else {
+    pageNote.textContent = initialPageNote;
+  }
 }
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+    filterButtons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle("genres__link--here", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+    updateCatalog();
+  });
+});
+
+if (query) updateCatalog();

@@ -113,12 +113,12 @@
         </div>
       </section>
 
-      <!-- Жанры-фишки: якорные ссылки на группы ниже -->
-      <nav class="genres" aria-label="Навигация по жанрам">
+      <!-- Фильтры по студиям -->
+      <nav class="genres" aria-label="Фильтр по студиям">
         <ul class="genres__list">
-          <li><a class="genres__link genres__link--here" href="#disney" aria-current="true">Все <span class="genres__num">6</span></a></li>
-          <li><a class="genres__link" href="#disney">Disney и Pixar <span class="genres__num">4</span></a></li>
-          <li><a class="genres__link" href="#dreamworks">DreamWorks <span class="genres__num">2</span></a></li>
+          <li><button class="genres__link genres__link--here" type="button" data-filter="all" aria-pressed="true">Все <span class="genres__num">6</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="disney" aria-pressed="false">Disney и Pixar <span class="genres__num">4</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="dreamworks" aria-pressed="false">DreamWorks <span class="genres__num">2</span></button></li>
         </ul>
       </nav>
       <p class="page-head__note" style="margin-top:-8px">

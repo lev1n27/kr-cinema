@@ -119,14 +119,14 @@
         </div>
       </section>
 
-      <!-- Жанры-фишки: якорные ссылки на группы ниже -->
-      <nav class="genres" aria-label="Навигация по жанрам">
+      <!-- Фильтры по жанрам -->
+      <nav class="genres" aria-label="Фильтр по жанрам">
         <ul class="genres__list">
-          <li><a class="genres__link genres__link--here" href="#scifi" aria-current="true">Все <span class="genres__num">8</span></a></li>
-          <li><a class="genres__link" href="#scifi">Фантастика <span class="genres__num">2</span></a></li>
-          <li><a class="genres__link" href="#drama">Драма <span class="genres__num">2</span></a></li>
-          <li><a class="genres__link" href="#thriller">Триллер <span class="genres__num">2</span></a></li>
-          <li><a class="genres__link" href="#adventure">Приключения <span class="genres__num">2</span></a></li>
+          <li><button class="genres__link genres__link--here" type="button" data-filter="all" aria-pressed="true">Все <span class="genres__num">8</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="scifi" aria-pressed="false">Фантастика <span class="genres__num">2</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="drama" aria-pressed="false">Драма <span class="genres__num">2</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="thriller" aria-pressed="false">Триллер <span class="genres__num">2</span></button></li>
+          <li><button class="genres__link" type="button" data-filter="adventure" aria-pressed="false">Приключения <span class="genres__num">2</span></button></li>
         </ul>
       </nav>
 

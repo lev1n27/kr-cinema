@@ -561,8 +561,11 @@ button:focus-visible {
   padding: 6px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  text-decoration: none;
+  background: transparent;
   color: var(--text-dim);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .genres__link:hover {
